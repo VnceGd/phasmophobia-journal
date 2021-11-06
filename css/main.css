@@ -1,0 +1,289 @@
+@font-face {
+    font-family: 'Lazy Dog';
+    src: url('../font/lazy_dog-webfont.woff2') format('woff2'),
+         url('../font/lazy_dog-webfont.woff') format('woff'),
+         url('../font/lazy_dog.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --book-color: #6b5b2f;
+    --page-color: #fffaca;
+    --tab-color: #f8e1a0;
+    --tab-hover-color: #c2ae7b;
+    --list-hover-color: #35b2fa;
+}
+
+* {
+    font-family: 'Lazy Dog', sans-serif;
+    box-sizing: border-box;
+    line-height: 1.2;
+}
+
+html {
+    font-size: .75em;
+    font-weight: 100;
+    background: #000;
+}
+
+body, p {
+    margin: 0;
+}
+
+a:hover, button:hover {
+    cursor: pointer;
+}
+
+h1, h2, h3 {
+    font-weight: 400;
+    margin: 0;
+}
+
+hr {
+    margin-top: 0;
+}
+
+nav {
+    position: relative;
+    top: 3.5vh;
+    width: 130vh;
+    margin: auto;
+    z-index: 2;
+}
+
+nav ul {
+    margin: 0;
+}
+
+nav ul a {
+    padding: .5vh 2vh;
+    border-radius: 10% / 30% 30% 0 0;
+    background-color: var(--tab-color);
+}
+
+nav ul a:hover {
+    background-color: var(--tab-hover-color);
+}
+
+.book {
+    position: relative;
+    margin: auto;
+    top: 2.5vh;
+    width: 130vh;
+    height: 90vh;
+    background: var(--book-color);
+    border: 1vh solid var(--book-color);
+    border-radius: 1vh;
+    z-index: 1;
+}
+
+/* All Pages */
+.page {
+    position: absolute;
+    padding: 3vh 5vh;
+    background-color: var(--page-color);
+    width: 50%;
+    height: 100%;
+    border-radius: .5vh;
+}
+
+.page.left {
+    left: 0;
+    background: linear-gradient(to left, var(--tab-hover-color), var(--page-color) 2%, var(--page-color));
+    border-right: 1px solid var(--book-color);
+}
+
+.page.right {
+    right: 0;
+    background: linear-gradient(to right, var(--tab-hover-color), var(--page-color) 2%, var(--page-color));
+}
+
+.content {
+    position: relative;
+    height: 100%;
+}
+
+.subcontent {
+    max-height: calc(100% - 4em);
+    overflow-y: auto;
+}
+
+.pagenum {
+    position: absolute;
+    bottom: -1vh;
+    left: 50%;
+    font-size: .8em;
+}
+
+.flip {
+    position: absolute;
+    background: transparent;
+    border: none;
+    width: 10vh;
+    height: 10vh;
+    bottom: -1vh;
+}
+
+.flip.disabled {
+    visibility: hidden;
+}
+
+.flip.left {
+    left: -1vh;
+}
+
+.flip.right {
+    right: -1vh;
+}
+
+.flip .graphic {
+    position: absolute;
+    top: 0;
+    width: 90%;
+    height: 90%;
+    box-shadow: 0 0 .5vh #000;
+}
+
+.flip:hover > .graphic {
+    box-shadow: 0 0 .5vh #999;
+}
+
+.flip.left .graphic {
+    right: 0;
+    background: linear-gradient(45deg, var(--tab-hover-color) 40%, var(--book-color) 50%, var(--page-color) 50%, var(--page-color));
+    border-radius: 0 .5vh;
+}
+
+.flip.right .graphic {
+    left: 0;
+    background: linear-gradient(-45deg, var(--tab-hover-color) 40%, var(--book-color) 50%, var(--page-color) 50%, var(--page-color));
+    border-radius: .5vh 0;
+}
+
+/* Ghost Type Page */
+.list {
+    position: relative;
+    margin-top: .5em;
+    width: 50%;
+    float: left;
+}
+
+.list li {
+    line-height: 1.4;
+}
+
+.list li:hover {
+    background-color: var(--list-hover-color);
+}
+
+/* Evidence Page */
+.evidencelist {
+    height: 6em;
+}
+
+.checklist {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 50%;
+    float: left;
+}
+
+.checklist li {
+    margin: .1em .05em;
+    padding: .05em .5em;
+    white-space: nowrap;
+    overflow-x: visible;
+}
+
+.checklist li:hover {
+    background-color: var(--list-hover-color);
+    cursor: pointer;
+}
+
+.checklist li.selected {
+    background-color: lightblue;
+}
+
+.checklist li.eliminated {
+    text-decoration: line-through;
+}
+
+.ghostlist .col {
+    height: 10em;
+}
+
+.ghostlist h2 {
+    background-color: var(--tab-hover-color);
+}
+
+.ghostlist p, .ghostlist h2 {
+    text-align: center;
+}
+
+.ghostlist ul {
+    margin: 0;
+}
+
+.ghostlist .col {
+    margin-top: .25em;
+    padding: 0;
+    width: 33.33%;
+    float: left;
+    list-style-type: none;
+    text-align: center;
+}
+
+.ghostlist .col li {
+    padding: .1em;
+}
+
+.ghostlist .col li:hover {
+    background-color: var(--list-hover-color);
+    cursor: pointer;
+}
+
+.ghostlist .col li.disabled {
+    opacity: .2;
+}
+
+/* Ghost Page */
+.description {
+    max-height: calc(100% - 10em);
+    overflow: auto;
+}
+
+.evidence {
+    position: absolute;
+    height: 5em;
+    bottom: 6vh;
+    line-height: 1.5;
+}
+
+/* Scale font for different screen heights */
+@media(min-height: 360px) {
+    html {
+        font-size: 1em;
+    }
+}
+@media(min-height: 480px) {
+    html {
+        font-size: 1.25em;
+    }
+}
+@media(min-height: 720px) {
+    html {
+        font-size: 1.5em;
+    }
+}
+@media(min-height: 900px) {
+    html {
+        font-size: 1.75em;
+    }
+}
+@media(min-height: 1080px) {
+    html {
+        font-size: 2em;
+    }
+}

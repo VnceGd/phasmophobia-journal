@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Phasmophobia Journal</title>
+
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/evidence.js" defer></script>
+        <script src="js/index.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <a onclick="setPage(evidencePage)">Evidence</a>
+                <a onclick="setPage(ghostPageOffset)">Ghosts</a>
+            </ul>
+        </nav>
+        <div class="book">
+            
+            <div id="page-left" class="page left">
+                <div id="content-left" class="content"></div>
+                <button id="flip-left" class="flip left" onclick="prevPage()">
+                    <div class="graphic"></div>
+                </button>
+            </div>
+            <div id="page-right" class="page right">
+                <noscript>
+                    Please enable JavaScript in order to use this app.
+                </noscript>
+                <div id="content-right" class="content"></div>
+                <button id="flip-right" class="flip right" onclick="nextPage()">
+                    <div class="graphic"></div>
+                </button>
+            </div>
+        </div>
+    </body>
+</html>
